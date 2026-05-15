@@ -13,6 +13,8 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { StickyMobileCTA } from "@/components/StickyMobileCTA";
+import { CartProvider } from "@/store/cart";
+import { CartDrawer } from "@/components/CartDrawer";
 
 function NotFoundComponent() {
   return (
@@ -128,15 +130,18 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen flex-col">
-        <Navbar />
-        <main className="flex-1 pb-24 md:pb-0">
-          <Outlet />
-        </main>
-        <Footer />
-        <FloatingWhatsApp />
-        <StickyMobileCTA />
-      </div>
+      <CartProvider>
+        <div className="flex min-h-screen flex-col">
+          <Navbar />
+          <main className="flex-1 pb-24 md:pb-0">
+            <Outlet />
+          </main>
+          <Footer />
+          <FloatingWhatsApp />
+          <StickyMobileCTA />
+          <CartDrawer />
+        </div>
+      </CartProvider>
     </QueryClientProvider>
   );
 }

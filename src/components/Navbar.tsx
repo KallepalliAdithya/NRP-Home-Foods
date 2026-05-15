@@ -1,9 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import logo from "@/assets/logo-nrp.png";
 import { WhatsAppButton } from "./WhatsAppButton";
+import { CartButton } from "./CartButton";
 import { heroOrder } from "@/lib/whatsapp";
 
 const NAV = [
@@ -17,6 +18,8 @@ const NAV = [
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { scrollY } = useScroll();
+  const logoScale = useTransform(scrollY, [0, 200], [1, 0.88]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -29,46 +32,70 @@ export function Navbar() {
     <header
       className={`sticky top-0 z-40 transition-all duration-300 ${
         scrolled
-          ? "bg-background/90 backdrop-blur shadow-soft border-b border-border/60"
-          : "bg-transparent"
+          ? "border-b border-border/40 bg-background/60 shadow-soft backdrop-blur-xl"
+          : "bg-background/0 backdrop-blur-0"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8 md:py-4">
+      <motion.div
+        animate={{ paddingTop: scrolled ? 8 : 14, paddingBottom: scrolled ? 8 : 14 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        className="mx-auto flex max-w-7xl items-center justify-between px-4 md:px-8"
+      >
         <Link to="/" className="flex items-center gap-2" aria-label="NRP home">
-          <img src={logo} alt="NRP" className="h-10 w-10 object-contain md:h-12 md:w-12" width={48} height={48} />
-          <span className="font-serif text-xl font-semibold text-primary md:text-2xl">
-            NRP
-          </span>
+          <motion.img
+            style={{ scale: logoScale }}
+            src={logo}
+            alt="NRP"
+            className="h-10 w-10 object-contain md:h-12 md:w-12"
+            width={48}
+            height={48}
+          />
+          <span className="font-serif text-xl font-semibold text-primary md:text-2xl">NRP</span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-1 md:flex">
           {NAV.map((item) => (
             <Link
               key={item.to}
               to={item.to}
-              className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
-              activeProps={{ className: "text-primary font-semibold" }}
+              className="relative rounded-full px-4 py-2 text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
+              activeProps={{ className: "text-primary" }}
               activeOptions={{ exact: item.to === "/" }}
             >
-              {item.label}
+              {({ isActive }) => (
+                <>
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-active-pill"
+                      className="absolute inset-0 rounded-full bg-primary/10"
+                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                    />
+                  )}
+                  <span className="relative">{item.label}</span>
+                </>
+              )}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-2 md:flex">
+          <CartButton />
           <WhatsAppButton message={heroOrder} size="md">
-            Order on WhatsApp
+            Order
           </WhatsAppButton>
         </div>
 
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="rounded-full p-2 text-foreground md:hidden"
-          aria-label={open ? "Close menu" : "Open menu"}
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
-      </div>
+        <div className="flex items-center gap-2 md:hidden">
+          <CartButton />
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="rounded-full p-2 text-foreground"
+            aria-label={open ? "Close menu" : "Open menu"}
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
+      </motion.div>
 
       <AnimatePresence>
         {open && (
@@ -77,7 +104,7 @@ export function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="overflow-hidden border-t border-border bg-background md:hidden"
+            className="overflow-hidden border-t border-border/40 bg-background/90 backdrop-blur-xl md:hidden"
           >
             <nav className="flex flex-col gap-1 px-4 py-4">
               {NAV.map((item) => (
