@@ -13,6 +13,8 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { StickyMobileCTA } from "@/components/StickyMobileCTA";
+import { CartProvider } from "@/store/cart";
+import { CartDrawer } from "@/components/CartDrawer";
 
 function NotFoundComponent() {
   return (
@@ -71,18 +73,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#8B1E1E" },
-      { title: "NRP - Amma Chethi Vanta & Traditional Homemade Foods" },
-      { name: "description", content: "Missing Amma Chethi Vanta? Enjoy authentic homemade sweets, snacks, pickles & podis crafted with traditional flavours and delivered across India." },
+      { title: "NRP — Taste of Andhra, Away From Home" },
+      { name: "description", content: "Authentic homemade Andhra sweets, snacks, pickles & podis. Order on WhatsApp, delivered pan-India." },
       { name: "author", content: "NRP Homemade Foods" },
       { property: "og:site_name", content: "NRP Homemade Foods" },
-      { property: "og:title", content: "NRP - Amma Chethi Vanta & Traditional Homemade Foods" },
-      { property: "og:description", content: "Missing Amma Chethi Vanta? Enjoy authentic homemade sweets, snacks, pickles & podis crafted with traditional flavours and delivered across India." },
+      { property: "og:title", content: "NRP — Taste of Andhra, Away From Home" },
+      { property: "og:description", content: "Authentic homemade Andhra sweets, snacks, pickles & podis. Order on WhatsApp." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "NRP - Amma Chethi Vanta & Traditional Homemade Foods" },
-      { name: "twitter:description", content: "Missing Amma Chethi Vanta? Enjoy authentic homemade sweets, snacks, pickles & podis crafted with traditional flavours and delivered across India." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/1pqAauVLmOXAtRGZrFDVSGzfaiQ2/social-images/social-1778828547412-social_image.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/1pqAauVLmOXAtRGZrFDVSGzfaiQ2/social-images/social-1778828547412-social_image.webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -132,15 +130,18 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen flex-col">
-        <Navbar />
-        <main className="flex-1 pb-24 md:pb-0">
-          <Outlet />
-        </main>
-        <Footer />
-        <FloatingWhatsApp />
-        <StickyMobileCTA />
-      </div>
+      <CartProvider>
+        <div className="flex min-h-screen flex-col">
+          <Navbar />
+          <main className="flex-1 pb-24 md:pb-0">
+            <Outlet />
+          </main>
+          <Footer />
+          <FloatingWhatsApp />
+          <StickyMobileCTA />
+          <CartDrawer />
+        </div>
+      </CartProvider>
     </QueryClientProvider>
   );
 }
