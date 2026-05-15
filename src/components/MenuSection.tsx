@@ -31,7 +31,13 @@ export function MenuSection({ full = false }: Props) {
 
   return (
     <div className="mx-auto max-w-7xl px-4 md:px-8">
-      <div className="mt-10 flex flex-wrap justify-center gap-2 md:gap-3">
+      <div
+        className={`mt-10 flex flex-wrap justify-center gap-2 md:gap-3 ${
+          full
+            ? "sticky top-[64px] z-30 -mx-4 rounded-2xl border border-border/40 bg-background/70 px-4 py-3 backdrop-blur-xl md:top-[80px] md:mx-0"
+            : ""
+        }`}
+      >
         {tabs.map((t) => {
           const isActive = active === t.id;
           return (
