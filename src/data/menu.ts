@@ -29,16 +29,58 @@ export type CategoryId =
   | "non-veg-pickles"
   | "podi";
 
+export type WeightOption = { label: string; grams: number; multiplier: number };
+
 export type MenuItem = {
   id: string;
   category: CategoryId;
   name: string;
   description: string;
-  price: number; // INR
+  price: number; // INR — base price for the default unit
   unit: string;
   image: string;
   popular?: boolean;
+  weights?: WeightOption[];
 };
+
+const PRESETS: Record<CategoryId, WeightOption[]> = {
+  sweets: [
+    { label: "250 g", grams: 250, multiplier: 1 },
+    { label: "500 g", grams: 500, multiplier: 1.9 },
+    { label: "1 kg", grams: 1000, multiplier: 3.6 },
+  ],
+  snacks: [
+    { label: "250 g", grams: 250, multiplier: 1 },
+    { label: "500 g", grams: 500, multiplier: 1.9 },
+  ],
+  "veg-pickles": [
+    { label: "250 g", grams: 250, multiplier: 0.55 },
+    { label: "500 g", grams: 500, multiplier: 1 },
+    { label: "1 kg", grams: 1000, multiplier: 1.9 },
+  ],
+  "non-veg-pickles": [
+    { label: "250 g", grams: 250, multiplier: 1 },
+    { label: "500 g", grams: 500, multiplier: 1.9 },
+  ],
+  podi: [
+    { label: "100 g", grams: 100, multiplier: 0.55 },
+    { label: "200 g", grams: 200, multiplier: 1 },
+    { label: "500 g", grams: 500, multiplier: 2.3 },
+  ],
+};
+
+export function getWeights(item: MenuItem): WeightOption[] {
+  return item.weights ?? PRESETS[item.category];
+}
+
+export function defaultWeight(item: MenuItem): WeightOption {
+  const weights = getWeights(item);
+  return weights.find((w) => w.multiplier === 1) ?? weights[0];
+}
+
+export function priceFor(item: MenuItem, weight: WeightOption): number {
+  return Math.round(item.price * weight.multiplier);
+}
 
 export const CATEGORIES: { id: CategoryId; label: string; tagline: string }[] = [
   { id: "sweets", label: "Sweets", tagline: "Festive jaggery & ghee classics" },

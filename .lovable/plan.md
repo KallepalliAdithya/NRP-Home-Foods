@@ -1,115 +1,112 @@
 
-# NRP — Taste of Andhra, Away From Home
+## Goal
 
-A premium, mobile-first marketing site for the NRP homemade Andhra food brand. No cart, no auth — every order CTA opens WhatsApp (+91 6281473558) with a prefilled message.
+Keep the current NRP design, routes, palette, and components intact. Layer in commerce-style interactions (cart, weight, quantity, WhatsApp checkout) and premium polish (glass navbar, scroll effects, sticky behavior, motion).
 
-## Design system
+No redesign. No new pages. No backend.
 
-Tokens added to `src/styles.css` (oklch equivalents of the brand hexes):
-- `--andhra-red` #8B1E1E → `--primary`
-- `--turmeric` #DFAF2B → `--accent`
-- `--curry-green` #355E3B → `--secondary`
-- `--cream` #FFF8EE → `--background`
-- `--cocoa` dark brown → `--foreground`
-- Gradients: warm cream→turmeric hero wash; subtle red→cocoa for premium surfaces
-- Shadows: soft warm-cocoa elevation
-- Radius: 1rem default, 1.5rem on cards
+---
 
-Typography (Google Fonts, loaded in `__root.tsx`):
-- Headings: **Fraunces** (elegant modern serif, premium food-brand feel)
-- Body: **Inter**
-- Optional accent: **Caveat** for handwritten "homemade" notes
+## 1. Cart system (client-side, zero backend)
 
-Motion: Framer Motion for entrance fades, stagger on cards, hover lift, sticky-CTA slide-in.
+New files:
+- `src/store/cart.tsx` — React context + reducer + `localStorage` persistence (key `nrp_cart_v1`).
+- `src/hooks/useCart.ts` — thin hook over the context.
+- `src/components/CartDrawer.tsx` — slide-in drawer (uses existing `ui/sheet.tsx`) with line items, qty steppers, weight badge, subtotal, "Checkout on WhatsApp" CTA.
+- `src/components/CartButton.tsx` — icon button with animated item-count badge; opens the drawer.
 
-## Routes (TanStack Start, separate routes for SEO)
-
-```
-src/routes/
-  __root.tsx          → shared shell, fonts, Navbar, Footer, FloatingWhatsApp
-  index.tsx           → Home (Hero, Why Choose, featured menu teaser, reviews teaser, Instagram, CTA)
-  menu.tsx            → Full menu with category tabs
-  about.tsx           → Story
-  reviews.tsx         → Testimonials grid
-  contact.tsx         → Contact + WhatsApp + delivery info
-```
-
-Each route gets unique `head()` meta (title, description, og:title/description, og:url, canonical at leaf only).
-
-## Components
-
-```
-src/components/
-  Navbar.tsx              → logo, nav links, WhatsApp CTA, mobile drawer
-  Footer.tsx
-  FloatingWhatsApp.tsx    → fixed bottom-right, mobile-prominent
-  StickyMobileCTA.tsx     → bottom bar on mobile
-  Hero.tsx                → headline, sub, two CTAs, hero image, motion entrance
-  WhyChooseUs.tsx         → 6 icon cards (Lucide icons in turmeric/curry tones)
-  MenuSection.tsx         → category tabs + animated grid (used on / as teaser, /menu in full)
-  MenuCard.tsx            → image, name, desc, price, WhatsApp order button
-  CategoryTabs.tsx        → animated underline, smooth transitions
-  Reviews.tsx             → testimonial cards
-  InstagramGallery.tsx    → 6–8 square food tiles, hover zoom
-  AboutStory.tsx          → emotional copy + image collage
-  SectionHeading.tsx      → reusable eyebrow + serif title
-  WhatsAppButton.tsx      → variants: primary, ghost, icon, floating; builds wa.me link
-```
-
-## Data
-
-`src/data/menu.ts` — typed JSON-shaped array (Supabase-ready schema):
-
+Cart item shape:
 ```ts
-type MenuItem = {
-  id: string; category: 'sweets'|'snacks'|'veg-pickles'|'non-veg-pickles'|'podi';
-  name: string; description: string; price: number; image: string; popular?: boolean;
-};
+{ id, name, image, weight: { label, grams, priceMultiplier }, qty, unitPrice, lineTotal }
 ```
 
-20 items as listed in the brief, realistic INR pricing (e.g. Avakaya ₹450/500g, Ariselu ₹350/250g, Chicken Pickle ₹650/250g, podis ₹220/200g, etc.). Categories: Sweets, Snacks/Hots, Veg Pickles, Non-Veg Pickles, Podi.
+Provider mounted once in `src/routes/__root.tsx` so cart persists across route changes.
 
-## WhatsApp helper
+## 2. Weight + quantity selection
 
-```ts
-// src/lib/whatsapp.ts
-export const WHATSAPP_NUMBER = '916281473558';
-export const waLink = (msg: string) =>
-  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
-export const orderMsg = (item: string) => `Hi NRP, I want to order ${item}.`;
-```
+Extend `src/data/menu.ts`:
+- Add optional `weights?: { label: string; grams: number; multiplier: number }[]` per `MenuItem`.
+- Default presets per category (e.g. pickles: 250g/500g/1kg; podis: 100g/200g/500g; sweets: 250g/500g). Base price stays the existing `price`/`unit`.
 
-Hero CTA → "Hi NRP, I'd like to place an order." Each MenuCard → `orderMsg(item.name)`. Floating button → generic enquiry message.
+Upgrade `MenuCard.tsx` (no visual redesign — same card, same spacing):
+- Replace the single "Order on WhatsApp" button with: weight pill-group + qty stepper (− / value / +) + "Add to cart" primary button.
+- Keep a secondary subtle "Order now on WhatsApp" link for single-item express order (preserves current behavior).
+- Animate price update with `motion` `key` swap when weight changes.
 
-## Imagery
+## 3. WhatsApp checkout summary
 
-Generated with `imagegen` (premium tier for hero, fast for menu/Instagram), saved under `src/assets/`:
-- `hero-andhra-spread.jpg` — warm-lit overhead Andhra thali / pickles & sweets spread
-- `logo-nrp.png` — transparent PNG: minimalist "NRP" wordmark with subtle curry-leaf + spice-dot motif, terracotta + turmeric on cream
-- One image per menu item (20 total) — close-up, warm lighting, rustic textures
-- 6 Instagram square tiles — varied food moments
-- About collage image — hands preparing/jarring pickles
+Extend `src/lib/whatsapp.ts`:
+- Add `cartCheckoutMsg(items, subtotal)` that formats a clean multi-line WhatsApp message:
+  ```
+  Hi NRP, I'd like to order:
+  • Avakaya — 500g × 2 = ₹960
+  • Karam Podi — 200g × 1 = ₹240
+  ---
+  Subtotal: ₹1,200
+  Name: …
+  Address: …
+  ```
+- Drawer "Checkout on WhatsApp" opens `waLink(cartCheckoutMsg(...))`.
 
-## Special features
+## 4. Glassmorphism navbar + scroll effects
 
-- Floating WhatsApp button (fixed, pulse animation on hover)
-- Sticky mobile CTA bar at bottom of viewport on small screens
-- Framer Motion: fade-up on scroll for sections, stagger for card grids, tab content cross-fade
-- Hover: card lift + image zoom
-- SEO: per-route meta, semantic landmarks, single H1 per page, alt text everywhere, JSON-LD `Restaurant` / `FoodEstablishment` on root, `Product` schema for menu items
-- Mobile-first Tailwind, responsive grid (1 → 2 → 3 → 4 cols)
+Update `src/components/Navbar.tsx` only (keep markup/structure):
+- Replace scrolled style with `backdrop-blur-xl bg-background/60 border-b border-border/40` + soft shadow; transparent at top.
+- Add `useScroll` + `useTransform` (motion) for subtle logo scale-down and padding shrink on scroll.
+- Add active-section underline animation using `layoutId` (already used in MenuSection tabs — reuse pattern).
+- Add cart icon to desktop + mobile nav.
 
-## Out of scope (per brief)
+## 5. Smooth section highlighting (home page)
 
-- No cart, no checkout, no auth
-- No Lovable Cloud (pure marketing site; menu lives in typed JSON, structured to migrate to Supabase later)
+Home page (`src/routes/index.tsx`) anchors:
+- New small hook `src/hooks/useActiveSection.ts` using `IntersectionObserver` to track which section is in view.
+- Navbar links pointing to in-page sections gain an animated indicator when their section is active. Cross-route links (Menu/About/Reviews/Contact) keep existing behavior.
 
-## Build order
+## 6. Premium animations (additive only)
 
-1. Tokens + fonts in `styles.css` and `__root.tsx`
-2. Generate logo + hero image
-3. Layout: Navbar, Footer, FloatingWhatsApp, StickyMobileCTA
-4. Menu data + remaining food images (batch)
-5. Sections: Hero, WhyChooseUs, MenuSection (with tabs), Reviews, InstagramGallery, AboutStory
-6. Routes: `/`, `/menu`, `/about`, `/reviews`, `/contact` with per-route SEO
-7. Motion polish + mobile QA
+- Hero: parallax on hero image via `useScroll` + `y` transform; staggered headline reveal (already partially there — tighten timing).
+- MenuCard: add `whileHover={{ y: -6 }}` + image `scale` already exists; add price-change spring animation.
+- Section reveals: standardize a `<Reveal>` wrapper component (`src/components/Reveal.tsx`) using `whileInView` with consistent easing, reused across `WhyChooseUs`, `AboutStory`, `Reviews`, `InstagramGallery`. Replace ad-hoc motion props.
+- CartDrawer: spring slide-in, item add → badge bounce, line item remove → height collapse via `AnimatePresence`.
+
+## 7. Sticky interactions
+
+- Keep existing `StickyMobileCTA`; extend it to show **cart subtotal + item count** when cart has items, otherwise the current "Order on WhatsApp" CTA.
+- On `/menu`, make the category tab bar `sticky top-[64px]` with glass background so it stays visible while scrolling long lists (mobile-first benefit).
+- `FloatingWhatsApp` stays; hide it when the cart drawer is open to avoid overlap.
+
+---
+
+## Out of scope
+
+- No payments, no auth, no Lovable Cloud.
+- No new routes, no removal of existing sections.
+- No palette / typography / logo changes.
+- No image regeneration.
+
+## Technical notes
+
+- Persistence: `localStorage` only; SSR-safe guard (`typeof window !== "undefined"`).
+- All new colors/blurs use existing tokens in `src/styles.css` — no hardcoded hex.
+- All new motion uses the already-installed `motion` package.
+- Cart context is the single source of truth; no prop drilling.
+
+## File change summary
+
+Created:
+- `src/store/cart.tsx`
+- `src/hooks/useCart.ts`
+- `src/hooks/useActiveSection.ts`
+- `src/components/CartDrawer.tsx`
+- `src/components/CartButton.tsx`
+- `src/components/Reveal.tsx`
+
+Edited (surgical, no redesign):
+- `src/data/menu.ts` (add weights)
+- `src/lib/whatsapp.ts` (add cart message builder)
+- `src/components/MenuCard.tsx` (weight + qty + add-to-cart)
+- `src/components/Navbar.tsx` (glass + scroll motion + cart button + active section)
+- `src/components/StickyMobileCTA.tsx` (cart-aware)
+- `src/components/FloatingWhatsApp.tsx` (hide when drawer open)
+- `src/routes/__root.tsx` (mount CartProvider + CartDrawer)
+- `src/routes/menu.tsx` (sticky category bar wrapper)

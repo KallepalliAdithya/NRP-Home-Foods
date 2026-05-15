@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import heroImg from "@/assets/hero-andhra-spread.jpg";
@@ -6,6 +6,8 @@ import { WhatsAppButton } from "./WhatsAppButton";
 import { heroOrder } from "@/lib/whatsapp";
 
 export function Hero() {
+  const { scrollY } = useScroll();
+  const imgY = useTransform(scrollY, [0, 600], [0, 80]);
   return (
     <section className="relative overflow-hidden">
       <div className="bg-gradient-warm grain">
@@ -58,14 +60,15 @@ export function Hero() {
             className="relative"
           >
             <div className="relative overflow-hidden rounded-3xl shadow-hover">
-              <img
+              <motion.img
+                style={{ y: imgY }}
                 src={heroImg}
                 alt="A premium spread of Andhra homemade pickles, sweets and snacks"
                 width={1600}
                 height={1200}
                 className="h-[420px] w-full object-cover md:h-[560px]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-cocoa/30 via-transparent to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-cocoa/30 via-transparent to-transparent" />
             </div>
 
             <motion.div
