@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Mail, MapPin } from "lucide-react";
-import logo from "@/assets/logo-nrp.png";
+import logo from "@/assets/logo-nrp.jpg";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { WHATSAPP_DISPLAY, generalEnquiry } from "@/lib/whatsapp";
 
@@ -11,7 +11,7 @@ export function Footer() {
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
             <img src={logo} alt="NRP" className="h-12 w-12 object-contain" width={48} height={48} />
-            <span className="font-serif text-2xl font-semibold text-cream">NRP</span>
+            <span className="font-serif text-2xl font-semibold text-cream">Home Made Foods</span>
           </div>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-cream/70">
             Homemade Andhra sweets, snacks, pickles and podis — packed fresh,

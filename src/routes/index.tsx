@@ -13,9 +13,9 @@ import { heroOrder } from "@/lib/whatsapp";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "NRP — Taste of Andhra, Away From Home" },
+      { title: "Home Made Foods — Taste of Andhra, Away From Home" },
       { name: "description", content: "Authentic homemade Andhra sweets, snacks, pickles & podis. Order on WhatsApp — delivered with the warmth of home." },
-      { property: "og:title", content: "NRP — Taste of Andhra, Away From Home" },
+      { property: "og:title", content: "Home Made Foods — Taste of Andhra, Away From Home" },
       { property: "og:description", content: "Homemade Andhra food, made with traditional recipes. Order on WhatsApp." },
       { property: "og:url", content: "/" },
     ],

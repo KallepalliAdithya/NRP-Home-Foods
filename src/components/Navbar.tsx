@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
-import logo from "@/assets/logo-nrp.png";
+import logo from "@/assets/logo-nrp.jpg";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { CartButton } from "./CartButton";
 import { heroOrder } from "@/lib/whatsapp";
@@ -41,16 +41,16 @@ export function Navbar() {
         transition={{ duration: 0.3, ease: "easeOut" }}
         className="mx-auto flex max-w-7xl items-center justify-between px-4 md:px-8"
       >
-        <Link to="/" className="flex items-center gap-2" aria-label="NRP home">
+        <Link to="/" className="flex items-center gap-2" aria-label="Home Made Foods home">
           <motion.img
             style={{ scale: logoScale }}
             src={logo}
-            alt="NRP"
+            alt="Home Made Foods"
             className="h-10 w-10 object-contain md:h-12 md:w-12"
             width={48}
             height={48}
           />
-          <span className="font-serif text-xl font-semibold text-primary md:text-2xl">NRP</span>
+          <span className="font-serif text-xl font-semibold text-primary md:text-2xl">Home Made Foods</span>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
