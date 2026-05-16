@@ -95,7 +95,7 @@ export const MENU: MenuItem[] = [
   { id: "ariselu", category: "sweets", name: "Ariselu", description: "Soft jaggery–rice flour discs, fried in ghee till deep gold.", price: 380, unit: "250 g", image: ariselu, popular: true },
   { id: "pootharekulu", category: "sweets", name: "Pootharekulu", description: "Paper-thin rice sheets layered with ghee, sugar & dry fruit.", price: 450, unit: "250 g", image: pootharekulu, popular: true },
   { id: "boondi-laddu", category: "sweets", name: "Boondi Laddu", description: "Golden gram-flour pearls bound in fragrant cardamom syrup.", price: 320, unit: "500 g (12 pcs)", image: boondiLaddu },
-  { id: "gavvalu", category: "sweets", name: "Gavvalu", description: "Shell-shaped crispies dipped in slow-cooked jaggery glaze.", price: 280, unit: "250 g", image: gavvalu },
+  { id: "gavvalu", category: "sweets", name: "Bellam Gavvalu", description: "Shell-shaped crispies dipped in slow-cooked jaggery glaze.", price: 280, unit: "250 g", image: gavvalu },
 
   // Snacks
   { id: "janthikalu", category: "snacks", name: "Janthikalu", description: "Hand-pressed rice flour spirals — crisp, light & savoury.", price: 220, unit: "250 g", image: janthikalu, popular: true },
