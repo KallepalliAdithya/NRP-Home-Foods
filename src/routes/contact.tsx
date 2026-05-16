@@ -8,9 +8,9 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — Home Made Foods" },
-      { name: "description", content: "Order homemade Andhra pickles, sweets, snacks and podis on WhatsApp at +91 6281473558. Pan-India delivery." },
+      { name: "description", content: "Order homemade Andhra pickles, sweets, snacks and podis on WhatsApp at +91 9390524599. Pan-India delivery." },
       { property: "og:title", content: "Contact Home Made Foods" },
-      { property: "og:description", content: "WhatsApp +91 6281473558 to order homemade Andhra food. Delivered pan-India." },
+      { property: "og:description", content: "WhatsApp +91 9390524599 to order homemade Andhra food. Delivered pan-India." },
       { property: "og:url", content: "/contact" },
     ],
     links: [{ rel: "canonical", href: "/contact" }],

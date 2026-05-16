@@ -1,7 +1,7 @@
 import type { CartItem } from "@/store/cart";
 
-export const WHATSAPP_NUMBER = "916281473558";
-export const WHATSAPP_DISPLAY = "+91 62814 73558";
+export const WHATSAPP_NUMBER = "919390524599";
+export const WHATSAPP_DISPLAY = "+91 93905 24599";
 
 export function waLink(message: string): string {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;

@@ -61,20 +61,30 @@ export function MenuSection({ full = false }: Props) {
         })}
       </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={active + (full ? "-full" : "-teaser")}
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.35, ease: "easeOut" }}
-          className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-        >
+      <motion.div
+        layout
+        transition={{ layout: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }}
+        className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      >
+        <AnimatePresence mode="popLayout" initial={false}>
           {items.map((item, i) => (
-            <MenuCard key={item.id} item={item} index={i} />
+            <motion.div
+              key={item.id}
+              layout
+              initial={{ opacity: 0, y: 16, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96, transition: { duration: 0.2 } }}
+              transition={{
+                duration: 0.45,
+                delay: Math.min(i, 7) * 0.04,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              <MenuCard item={item} index={i} />
+            </motion.div>
           ))}
-        </motion.div>
-      </AnimatePresence>
+        </AnimatePresence>
+      </motion.div>
     </div>
   );
 }
