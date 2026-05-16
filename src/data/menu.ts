@@ -110,7 +110,7 @@ export const MENU: MenuItem[] = [
   { id: "lemon-pickle", category: "veg-pickles", name: "Lemon Pickle", description: "Aged lemon wedges in turmeric, salt & green chilli.", price: 340, unit: "500 g", image: lemonPickle },
 
   // Non-veg pickles
-  { id: "chicken-pickle", category: "non-veg-pickles", name: "Chicken Pickle", description: "Boneless chicken in a deep, oily Andhra masala — bold & rich.", price: 680, unit: "250 g", image: chickenPickle, popular: true },
+  { id: "chicken-pickle", category: "non-veg-pickles", name: "Natukodi chicken in a deep, oily Andhra masala — bold & rich.", description: "Boneless chicken in a deep, oily Andhra masala — bold & rich.", price: 680, unit: "250 g", image: chickenPickle, popular: true },
   { id: "prawn-pickle", category: "non-veg-pickles", name: "Prawn Pickle", description: "Tender prawns simmered with garlic, chilli & sesame oil.", price: 720, unit: "250 g", image: prawnPickle },
   { id: "fish-pickle", category: "non-veg-pickles", name: "Fish Pickle", description: "Boneless fish chunks in tangy, fiery Andhra spice oil.", price: 650, unit: "250 g", image: fishPickle },
   { id: "mutton-pickle", category: "non-veg-pickles", name: "Mutton Pickle", description: "Slow-cooked mutton, deeply spiced — a heritage recipe.", price: 780, unit: "250 g", image: muttonPickle },
