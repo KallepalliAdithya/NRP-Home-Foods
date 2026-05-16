@@ -105,7 +105,7 @@ export const MENU: MenuItem[] = [
 
   // Veg pickles
   { id: "avakaya", category: "veg-pickles", name: "Avakaya", description: "The legendary raw mango pickle — mustard, chilli, sesame oil.", price: 480, unit: "500 g", image: avakaya, popular: true },
-  { id: "gongura", category: "veg-pickles", name: "Gongura Pickle", description: "Tangy sorrel leaves slow-cooked with garlic & red chilli.", price: 460, unit: "500 g", image: gongura, popular: true },
+  { id: "gongura", category: "veg-pickles", name: "Amla Pickle", description: "Tangy sorrel leaves slow-cooked with garlic & red chilli.", price: 460, unit: "500 g", image: gongura, popular: true },
   { id: "tomato-pickle", category: "veg-pickles", name: "Tomato Pickle", description: "Sun-ripened tomatoes tempered with mustard & curry leaf.", price: 380, unit: "500 g", image: tomatoPickle },
   { id: "lemon-pickle", category: "veg-pickles", name: "Lemon Pickle", description: "Aged lemon wedges in turmeric, salt & green chilli.", price: 340, unit: "500 g", image: lemonPickle },
 
