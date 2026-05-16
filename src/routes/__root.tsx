@@ -100,7 +100,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: "Home Made Foods",
           description: "Homemade Andhra Pradesh sweets, snacks, pickles and podis.",
           servesCuisine: "Andhra, South Indian",
-          telephone: "+91 6281473558",
+          telephone: "+91 9390524599",
           areaServed: "IN",
         }),
       },

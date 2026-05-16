@@ -100,7 +100,7 @@ export const MENU: MenuItem[] = [
   // Snacks
   { id: "janthikalu", category: "snacks", name: "Janthikalu", description: "Hand-pressed rice flour spirals — crisp, light & savoury.", price: 220, unit: "250 g", image: janthikalu, popular: true },
   { id: "chekkalu", category: "snacks", name: "Chekkalu", description: "Thin rice crackers studded with sesame, peanut & curry leaf.", price: 240, unit: "250 g", image: chekkalu },
-  { id: "murukulu", category: "snacks", name: " crunchy spice  — perfect with evening chai.", description: "Coiled, crunchy spice rings — perfect with evening chai.", price: 220, unit: "250 g", image: murukulu },
+  { id: "murukulu", category: "snacks", name: "Murukulu", description: "Coiled, crunchy spice rings — perfect with evening chai.", price: 220, unit: "250 g", image: murukulu },
   { id: "andhra-mixture", category: "snacks", name: "Andhra Mixture", description: "A fiery medley of sev, peanut, dal & curry leaf.", price: 260, unit: "250 g", image: andhraMixture, popular: true },
 
   // Veg pickles
@@ -110,7 +110,7 @@ export const MENU: MenuItem[] = [
   { id: "lemon-pickle", category: "veg-pickles", name: "Lemon Pickle", description: "Aged lemon wedges in turmeric, salt & green chilli.", price: 340, unit: "500 g", image: lemonPickle },
 
   // Non-veg pickles
-  { id: "chicken-pickle", category: "non-veg-pickles", name: "Natukodi chicken in a deep, oily Andhra masala — bold & rich.", description: "Boneless chicken in a deep, oily Andhra masala — bold & rich.", price: 680, unit: "250 g", image: chickenPickle, popular: true },
+  { id: "chicken-pickle", category: "non-veg-pickles", name: "Chicken Pickle", description: "Natukodi chicken in a deep, oily Andhra masala — bold & rich.", price: 680, unit: "250 g", image: chickenPickle, popular: true },
   { id: "prawn-pickle", category: "non-veg-pickles", name: "Prawn Pickle", description: "Tender prawns simmered with garlic, chilli & sesame oil.", price: 720, unit: "250 g", image: prawnPickle },
   { id: "fish-pickle", category: "non-veg-pickles", name: "Fish Pickle", description: "Boneless fish chunks in tangy, fiery Andhra spice oil.", price: 650, unit: "250 g", image: fishPickle },
   { id: "mutton-pickle", category: "non-veg-pickles", name: "Mutton Pickle", description: "Slow-cooked mutton, deeply spiced — a heritage recipe.", price: 780, unit: "250 g", image: muttonPickle },
