@@ -9,7 +9,7 @@ import janthikalu from "@/assets/menu/janthikalu.jpg";
 import chekkalu from "@/assets/menu/chekkalu.jpg";
 import murukulu from "@/assets/menu/murukulu.jpg";
 import andhraMixture from "@/assets/menu/andhra-mixture.jpg";
-import avakaya from "@/assets/menu/avakaya.jpg";
+import avakaya from "@/assets/menu/avakaya.png";
 import gongura from "@/assets/menu/gongura.jpg";
 import tomatoPickle from "@/assets/menu/tomato-pickle.jpg";
 import lemonPickle from "@/assets/menu/lemon-pickle.jpg";
