@@ -100,7 +100,7 @@ export const MENU: MenuItem[] = [
   // Snacks
   { id: "janthikalu", category: "snacks", name: "Janthikalu", description: "Hand-pressed rice flour spirals — crisp, light & savoury.", price: 220, unit: "250 g", image: janthikalu, popular: true },
   { id: "chekkalu", category: "snacks", name: "Chekkalu", description: "Thin rice crackers studded with sesame, peanut & curry leaf.", price: 240, unit: "250 g", image: chekkalu },
-  { id: "murukulu", category: "snacks", name: "Murukulu", description: "Coiled, crunchy spice rings — perfect with evening chai.", price: 220, unit: "250 g", image: murukulu },
+  { id: "murukulu", category: "snacks", name: " crunchy spice  — perfect with evening chai.", description: "Coiled, crunchy spice rings — perfect with evening chai.", price: 220, unit: "250 g", image: murukulu },
   { id: "andhra-mixture", category: "snacks", name: "Andhra Mixture", description: "A fiery medley of sev, peanut, dal & curry leaf.", price: 260, unit: "250 g", image: andhraMixture, popular: true },
 
   // Veg pickles
