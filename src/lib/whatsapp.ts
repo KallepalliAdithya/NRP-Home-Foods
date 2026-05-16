@@ -7,9 +7,9 @@ export function waLink(message: string): string {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
-export const orderMsg = (item: string) => `Hi NRP, I want to order ${item}.`;
-export const generalEnquiry = "Hi NRP, I'd like to know more about your homemade Andhra food.";
-export const heroOrder = "Hi NRP, I'd like to place an order.";
+export const orderMsg = (item: string) => `Hi Home Made Foods, I want to order ${item}.`;
+export const generalEnquiry = "Hi Home Made Foods, I'd like to know more about your homemade Andhra food.";
+export const heroOrder = "Hi Home Made Foods, I'd like to place an order.";
 
 export function formatINR(n: number): string {
   return `₹${n.toLocaleString("en-IN")}`;
@@ -22,7 +22,7 @@ export function cartCheckoutMsg(items: CartItem[], subtotal: number): string {
     return `• ${i.name} — ${i.weight.label} × ${i.qty} = ${formatINR(line)}`;
   });
   return [
-    "Hi NRP, I'd like to place this order:",
+    "Hi Home Made Foods, I'd like to place this order:",
     "",
     ...lines,
     "—",
