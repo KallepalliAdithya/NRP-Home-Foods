@@ -5,9 +5,9 @@ import { SectionHeading } from "@/components/SectionHeading";
 export const Route = createFileRoute("/menu")({
   head: () => ({
     meta: [
-      { title: "Menu — NRP Homemade Andhra Foods" },
-      { name: "description", content: "Browse the full NRP menu: Andhra sweets, snacks, veg & non-veg pickles, and traditional podis. Order any item on WhatsApp." },
-      { property: "og:title", content: "Menu — NRP Homemade Andhra Foods" },
+      { title: "Menu — Home Made Foods" },
+      { name: "description", content: "Browse the full menu: Andhra sweets, snacks, veg & non-veg pickles, and traditional podis. Order any item on WhatsApp." },
+      { property: "og:title", content: "Menu — Home Made Foods" },
       { property: "og:description", content: "Andhra sweets, snacks, pickles & podis — all homemade. Order on WhatsApp." },
       { property: "og:url", content: "/menu" },
     ],

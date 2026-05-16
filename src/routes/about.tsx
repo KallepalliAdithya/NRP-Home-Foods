@@ -8,10 +8,10 @@ import { generalEnquiry } from "@/lib/whatsapp";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — NRP Homemade Andhra Foods" },
-      { name: "description", content: "The story of NRP: a small Andhra kitchen, traditional recipes, and a promise to deliver the taste of home." },
-      { property: "og:title", content: "About — NRP" },
-      { property: "og:description", content: "Born from longing, served with love. NRP brings homemade Andhra food to families away from home." },
+      { title: "About — Home Made Foods" },
+      { name: "description", content: "The story of Home Made Foods: a small Andhra kitchen, traditional recipes, and a promise to deliver the taste of home." },
+      { property: "og:title", content: "About — Home Made Foods" },
+      { property: "og:description", content: "Born from longing, served with love. Home Made Foods brings homemade Andhra food to families away from home." },
       { property: "og:url", content: "/about" },
     ],
     links: [{ rel: "canonical", href: "/about" }],
@@ -24,7 +24,7 @@ function AboutPage() {
     <>
       <section className="bg-gradient-warm grain pb-4 pt-14 md:pt-20">
         <SectionHeading
-          eyebrow="About NRP"
+          eyebrow="About Home Made Foods"
           title="A kitchen that travels with you."
           subtitle="Slow-cooked recipes from Andhra Pradesh, made fresh and packed with care."
         />
