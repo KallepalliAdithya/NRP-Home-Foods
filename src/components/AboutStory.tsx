@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Link } from "@tanstack/react-router";
-import about from "@/assets/about-hands.jpg";
+import about from "@/assets/about-hands.png";
 
 export function AboutStory({ compact = false }: { compact?: boolean }) {
   return (

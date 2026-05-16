@@ -20,7 +20,7 @@ export function Hero() {
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-cream/60 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] text-primary backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              Homemade · Andhra Pradesh
+              HOMEMADE · AMMA CHETHI VANTA
             </span>
 
             <h1 className="mt-6 text-balance font-serif text-4xl leading-[1.05] text-foreground md:text-6xl lg:text-7xl">
