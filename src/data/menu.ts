@@ -117,7 +117,7 @@ export const MENU: MenuItem[] = [
 
   // Podis
   { id: "karam-podi", category: "podi", name: "Rich, Spicy & Aromatic Straight from Guntur", description: "The classic red chilli–garlic podi — heat with depth.", price: 240, unit: "200 g", image: karamPodi, popular: true },
-  { id: "idli-podi", category: "podi", name: "Idli Podi", description: "Roasted lentils, sesame & chilli — drizzle ghee, devour.", price: 220, unit: "200 g", image: idliPodi },
+  { id: "idli-podi", category: "podi", name: "KAKARAKAYA PODI", description: "Roasted lentils, sesame & chilli — drizzle ghee, devour.", price: 220, unit: "200 g", image: idliPodi },
   { id: "curry-leaf-podi", category: "podi", name: "Protein Rich & Delicious Made with Roasted Toor Dal", description: "Aromatic curry leaves ground with dal & dry red chilli.", price: 240, unit: "200 g", image: curryLeafPodi },
   { id: "peanut-podi", category: "podi", name: "Peanut Podi", description: "Roasted peanut, garlic & chilli — comfort in a spoonful.", price: 220, unit: "200 g", image: peanutPodi },
 ];
