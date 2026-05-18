@@ -5,9 +5,9 @@ import { SectionHeading } from "@/components/SectionHeading";
 export const Route = createFileRoute("/reviews")({
   head: () => ({
     meta: [
-      { title: "Reviews — Home Made Foods" },
+      { title: "Reviews — NATURAL RECIPE PRODUCTS" },
       { name: "description", content: "What Andhra families across India are saying about our homemade pickles, sweets, snacks and podis." },
-      { property: "og:title", content: "Reviews — Home Made Foods" },
+      { property: "og:title", content: "Reviews — NATURAL RECIPE PRODUCTS" },
       { property: "og:description", content: "Real reviews from real customers — homemade Andhra food, delivered with love." },
       { property: "og:url", content: "/reviews" },
     ],

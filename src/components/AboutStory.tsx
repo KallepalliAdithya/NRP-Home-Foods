@@ -41,7 +41,7 @@ export function AboutStory({ compact = false }: { compact?: boolean }) {
           </h2>
           <div className="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground">
             <p>
-              Home Made Foods began in a small Andhra kitchen, with a daughter calling
+              NATURAL RECIPE PRODUCTS began in a small Andhra kitchen, with a daughter calling
               home and asking — "Amma, can you send me a jar of avakaya?"
               That one jar became two, then ten, then a family of recipes
               travelling across cities and oceans.
@@ -56,7 +56,7 @@ export function AboutStory({ compact = false }: { compact?: boolean }) {
               <p>
                 If you grew up on Sunday meals of curd-rice with avakaya, on
                 Sankranti mornings filled with the smell of frying ariselu —
-                we made Home Made Foods for you.
+                we made NATURAL RECIPE PRODUCTS for you.
               </p>
             )}
           </div>

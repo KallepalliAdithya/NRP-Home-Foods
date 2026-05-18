@@ -7,9 +7,9 @@ import { WHATSAPP_DISPLAY, generalEnquiry } from "@/lib/whatsapp";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Home Made Foods" },
+      { title: "Contact — NATURAL RECIPE PRODUCTS" },
       { name: "description", content: "Order homemade Andhra pickles, sweets, snacks and podis on WhatsApp at +91 9390524599. Pan-India delivery." },
-      { property: "og:title", content: "Contact Home Made Foods" },
+      { property: "og:title", content: "Contact NATURAL RECIPE PRODUCTS" },
       { property: "og:description", content: "WhatsApp +91 9390524599 to order homemade Andhra food. Delivered pan-India." },
       { property: "og:url", content: "/contact" },
     ],
