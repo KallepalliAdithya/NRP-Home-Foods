@@ -24,7 +24,7 @@ function AboutPage() {
     <>
       <section className="bg-gradient-warm grain pb-4 pt-14 md:pt-20">
         <SectionHeading
-          eyebrow="About Home Made Foods"
+          eyebrow="About NATURAL RECIPE PRODUCTS"
           title="A kitchen that travels with you."
           subtitle="Slow-cooked recipes from Andhra Pradesh, made fresh and packed with care."
         />
