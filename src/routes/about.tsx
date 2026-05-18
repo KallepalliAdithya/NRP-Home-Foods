@@ -8,10 +8,10 @@ import { generalEnquiry } from "@/lib/whatsapp";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Home Made Foods" },
-      { name: "description", content: "The story of Home Made Foods: a small Andhra kitchen, traditional recipes, and a promise to deliver the taste of home." },
-      { property: "og:title", content: "About — Home Made Foods" },
-      { property: "og:description", content: "Born from longing, served with love. Home Made Foods brings homemade Andhra food to families away from home." },
+      { title: "About — NATURAL RECIPE PRODUCTS" },
+      { name: "description", content: "The story of NATURAL RECIPE PRODUCTS: a small Andhra kitchen, traditional recipes, and a promise to deliver the taste of home." },
+      { property: "og:title", content: "About — NATURAL RECIPE PRODUCTS" },
+      { property: "og:description", content: "Born from longing, served with love. NATURAL RECIPE PRODUCTS brings homemade Andhra food to families away from home." },
       { property: "og:url", content: "/about" },
     ],
     links: [{ rel: "canonical", href: "/about" }],
