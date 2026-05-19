@@ -15,8 +15,8 @@ export function Hero() {
   return (
     <section className="relative isolate overflow-hidden">
       <div
-        className="relative min-h-[600px] w-full bg-cover bg-center md:min-h-[720px]"
-        style={{ backgroundImage: `url(${heroBg})` }}
+        className="relative min-h-[600px] w-full bg-cover bg-right md:min-h-[720px]"
+        style={{ backgroundImage: `url(${heroBg})`, backgroundPosition: "right center" }}
       >
         {/* Overlays for readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/10" />
