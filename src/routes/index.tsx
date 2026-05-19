@@ -30,7 +30,7 @@ function HomePage() {
       <Hero />
       <WhyChooseUs />
 
-      <section className="py-20 md:py-28">
+      <section id="menu" className="py-20 md:py-28">
         <SectionHeading
           eyebrow="Our Menu"
           title="A taste of every Andhra kitchen."
