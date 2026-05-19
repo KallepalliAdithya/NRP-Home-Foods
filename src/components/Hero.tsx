@@ -1,99 +1,61 @@
-import { motion, useScroll, useTransform } from "motion/react";
-import { Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
-import heroImg from "@/assets/hero-andhra-spread.jpg";
-import { WhatsAppButton } from "./WhatsAppButton";
-import { heroOrder } from "@/lib/whatsapp";
+import { motion } from "motion/react";
+import heroBg from "@/assets/hero-bg.png";
 
 export function Hero() {
-  const { scrollY } = useScroll();
-  const imgY = useTransform(scrollY, [0, 600], [0, 80]);
+  const handleExplore = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const el = document.getElementById("menu");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      window.location.href = "/menu";
+    }
+  };
+
   return (
-    <section className="relative overflow-hidden">
-      <div className="bg-gradient-warm grain">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 pb-16 pt-10 md:grid-cols-2 md:gap-16 md:px-8 md:pb-24 md:pt-16">
+    <section className="relative isolate overflow-hidden">
+      <div
+        className="relative min-h-[600px] w-full bg-cover bg-center md:min-h-[720px]"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      >
+        {/* Overlays for readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+
+        <div className="relative mx-auto flex min-h-[600px] max-w-7xl items-center px-4 py-20 md:min-h-[720px] md:px-8 md:py-28">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="relative z-10"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-2xl text-left"
           >
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-cream/60 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.2em] text-primary backdrop-blur">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              HOMEMADE · AMMA CHETHI VANTA
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-white backdrop-blur">
+              <span className="h-1.5 w-1.5 rounded-full bg-turmeric" />
+              100% Homemade • Made with love in Andhra
             </span>
 
-            <h1 className="mt-6 text-balance font-serif text-4xl leading-[1.05] text-foreground md:text-6xl lg:text-7xl">
+            <h1 className="mt-6 text-balance font-serif text-4xl leading-[1.05] text-white md:text-6xl lg:text-7xl">
               Taste of Andhra,
-              <span className="block text-primary">Away From Home.</span>
+              <span className="block text-turmeric">Away From Home</span>
             </h1>
 
-            <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
-              Authentic homemade Andhra sweets, snacks, pickles and podis —
-              made in small batches with traditional recipes and delivered with
-              the warmth of home.
+            <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-white/85 md:text-lg">
+              Authentic Telugu homemade pickles, sweets, snacks & podis — crafted with traditional homemade care.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <WhatsAppButton message={heroOrder} size="lg">
-                Order on WhatsApp
-              </WhatsAppButton>
-              <Link
-                to="/menu"
-                className="inline-flex items-center gap-2 rounded-full border border-primary/30 px-7 py-4 text-sm font-medium text-primary transition-all hover:bg-primary hover:text-primary-foreground"
+            <div className="mt-8">
+              <a
+                href="/menu"
+                onClick={handleExplore}
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-semibold uppercase tracking-wider text-primary-foreground shadow-hover transition-all hover:-translate-y-0.5 hover:bg-primary/90"
               >
-                View Menu <ArrowRight className="h-4 w-4" />
-              </Link>
+                Explore Menu
+              </a>
             </div>
 
-            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-              <span>★★★★★ 500+ happy homes</span>
-              <span className="hidden h-3 w-px bg-border md:block" />
-              <span>Pan-India delivery</span>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: "easeOut", delay: 0.1 }}
-            className="relative"
-          >
-            <div className="relative overflow-hidden rounded-3xl shadow-hover">
-              <motion.img
-                style={{ y: imgY }}
-                src={heroImg}
-                alt="A premium spread of Andhra homemade pickles, sweets and snacks"
-                width={1600}
-                height={1200}
-                className="h-[420px] w-full object-cover md:h-[560px]"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-cocoa/30 via-transparent to-transparent" />
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              className="absolute -bottom-5 left-4 hidden rounded-2xl bg-card/95 p-4 shadow-card backdrop-blur md:left-6 md:flex md:items-center md:gap-3"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-turmeric/20 text-2xl">
-                🌶️
-              </div>
-              <div>
-                <p className="font-serif text-sm text-foreground">Sun-cured Avakaya</p>
-                <p className="text-xs text-muted-foreground">Slow-aged 21 days</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.5 }}
-              className="absolute -top-4 right-4 hidden rounded-2xl bg-card/95 p-3 shadow-card backdrop-blur md:right-6 md:block"
-            >
-              <p className="font-script text-xl text-primary">"like home"</p>
-            </motion.div>
+            <p className="mt-6 text-sm font-medium text-white/90">
+              ⭐ 5,000+ happy families served
+            </p>
           </motion.div>
         </div>
       </div>
