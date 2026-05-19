@@ -30,10 +30,10 @@ export function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-40 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
         scrolled
-          ? "border-b border-border/40 bg-background/60 shadow-soft backdrop-blur-xl"
-          : "bg-background/0 backdrop-blur-0"
+          ? "border-b border-border/40 bg-background/70 shadow-soft backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent backdrop-blur-0"
       }`}
     >
       <motion.div
