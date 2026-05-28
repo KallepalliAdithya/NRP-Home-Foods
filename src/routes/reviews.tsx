@@ -18,7 +18,7 @@ export const Route = createFileRoute("/reviews")({
 
 function ReviewsPage() {
   return (
-    <section className="pt-10 md:pt-16">
+    <section className="py-20 md:py-28 pt-32 md:pt-40">
       <SectionHeading
         eyebrow="Reviews"
         title="500+ Andhra families. One taste of home."

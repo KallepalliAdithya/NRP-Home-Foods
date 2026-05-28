@@ -30,7 +30,7 @@ export function Reviews({ limit }: { limit?: number }) {
                 ))}
               </div>
               <blockquote className="mt-4 text-pretty font-serif text-lg leading-relaxed text-foreground">
-                "{r.text}"
+                &ldquo;{r.text}&rdquo;
               </blockquote>
               <figcaption className="mt-5 flex items-center gap-3 border-t border-border/60 pt-4">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 font-serif text-primary">

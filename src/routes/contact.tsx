@@ -68,8 +68,7 @@ function ContactPage() {
                 <a
                   key={s.label}
                   href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  {...(s.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   aria-label={s.label}
                   className="rounded-full bg-secondary p-3 text-foreground transition-all hover:bg-primary hover:text-primary-foreground"
                 >

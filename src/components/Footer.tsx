@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Instagram, Facebook, Mail, MapPin } from "lucide-react";
 import logo from "@/assets/logo-nrp.jpg";
 import { WhatsAppButton } from "./WhatsAppButton";
-import { WHATSAPP_DISPLAY, generalEnquiry } from "@/lib/whatsapp";
+import { WHATSAPP_DISPLAY, WHATSAPP_NUMBER, generalEnquiry } from "@/lib/whatsapp";
 
 export function Footer() {
   return (
@@ -51,7 +51,7 @@ export function Footer() {
               <span>Andhra Pradesh, India · Pan-India delivery</span>
             </li>
             <li>
-              <a href={`tel:${WHATSAPP_DISPLAY.replace(/\s/g, "")}`} className="hover:text-turmeric">
+              <a href={`tel:+${WHATSAPP_NUMBER}`} className="hover:text-turmeric">
                 {WHATSAPP_DISPLAY}
               </a>
             </li>
