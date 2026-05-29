@@ -94,7 +94,7 @@ export const MENU: MenuItem[] = [
   // Sweets
   { id: "ariselu", category: "sweets", name: "Ariselu", description: "Soft jaggery–rice flour discs, fried in ghee till deep gold.", price: 380, unit: "250 g", image: ariselu, popular: true },
   { id: "pootharekulu", category: "sweets", name: "Pootharekulu", description: "Paper-thin rice sheets layered with ghee, sugar & dry fruit.", price: 450, unit: "250 g", image: pootharekulu, popular: true },
-  { id: "boondi-laddu", category: "sweets", name: "Golden gram-Made Rich Quality Dry fruits and flour pearls bound in fragrant cardamom syrup.", description: "Golden gram-flour pearls bound in fragrant cardamom syrup.", price: 320, unit: "500 g (12 pcs)", image: boondiLaddu },
+  { id: "boondi-laddu", category: "sweets", name: "Boondi Laddu", description: "Golden gram-flour pearls bound in fragrant cardamom syrup.", price: 320, unit: "500 g (12 pcs)", image: boondiLaddu },
   { id: "gavvalu", category: "sweets", name: "Bellam Gavvalu", description: "Shell-shaped crispies dipped in slow-cooked jaggery glaze.", price: 280, unit: "250 g", image: gavvalu },
 
   // Snacks
@@ -116,7 +116,7 @@ export const MENU: MenuItem[] = [
   { id: "mutton-pickle", category: "non-veg-pickles", name: "Mutton Pickle", description: "Slow-cooked mutton, deeply spiced — a heritage recipe.", price: 780, unit: "250 g", image: muttonPickle },
 
   // Podis
-  { id: "karam-podi", category: "podi", name: "Rich, Spicy & Aromatic Straight from Guntur", description: "The classic red chilli–garlic podi — heat with depth.", price: 240, unit: "200 g", image: karamPodi, popular: true },
+  { id: "karam-podi", category: "podi", name: "Karam Podi", description: "The classic red chilli–garlic podi — heat with depth.", price: 240, unit: "200 g", image: karamPodi, popular: true },
   { id: "idli-podi", category: "podi", name: "KAKARAKAYA PODI", description: "Unique, Healthy & Traditional Made with Bitter Gourd", price: 220, unit: "200 g", image: idliPodi },
   { id: "curry-leaf-podi", category: "podi", name: "KARIVEPAKU PODI", description: "Aromatic curry leaves ground with dal & dry red chilli.", price: 240, unit: "200 g", image: curryLeafPodi },
   { id: "peanut-podi", category: "podi", name: "KANDI PODI", description: "Protein Rich & Delicious Made with Roasted Toor Dal", price: 220, unit: "200 g", image: peanutPodi },
